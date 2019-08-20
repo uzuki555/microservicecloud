@@ -1,6 +1,7 @@
 package com.wyj.springcloud.Controller;
 
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.wyj.springcloud.entities.Dept;
 import com.wyj.springcloud.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class DeptController {
 
 
 
-
+    @HystrixCommand(fallbackMethod = "processHystrix_Get")
     @RequestMapping(value = "/dept/get/{id}",method = RequestMethod.GET )
     public Dept get(@PathVariable("id") Long id){
        Dept dept = this.service.get(id);
