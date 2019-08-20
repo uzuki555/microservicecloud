@@ -1,0 +1,10 @@
+
+spring:
+  cloud:
+    config:
+      name: microservicecloud-config-client
+      profile: dev
+      label: master
+      uri: http://127.0.0.1:3344
+server:
+  port: 3355
